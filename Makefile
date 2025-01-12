@@ -3,6 +3,9 @@ all: wasm cli
 run:
 	cargo run
 
+test:
+	cargo test
+
 cli:
 	cargo build --release
 
@@ -13,4 +16,4 @@ clean:
 	rm -rf target
 	$(MAKE) -C rusty-life-wasm clean
 
-.PHONY: wasm cli run clean
+.PHONY: wasm cli run clean test

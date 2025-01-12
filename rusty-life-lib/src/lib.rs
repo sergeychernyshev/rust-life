@@ -1,5 +1,7 @@
 use rand;
 
+pub mod shapes;
+
 pub struct GameOfLife {
     width: usize,
     height: usize,
@@ -14,6 +16,24 @@ impl GameOfLife {
             height,
             cells: vec![false; width * height],
             prev_cells: vec![false; width * height],
+        }
+    }
+
+    pub fn from_shape(shape: shapes::LifeShape) -> GameOfLife {
+        GameOfLife {
+            width: shape.width,
+            height: shape.height,
+            cells: shape.cells,
+            prev_cells: vec![false; shape.width * shape.height],
+        }
+    }
+
+    pub fn add(&mut self, shape: shapes::LifeShape, x: usize, y: usize) {
+        for sy in 0..shape.height {
+            for sx in 0..shape.width {
+                let idx = (y + sy) * self.width + (x + sx);
+                self.cells[idx] = shape.cells[sy * shape.width + sx];
+            }
         }
     }
 
@@ -87,5 +107,18 @@ impl GameOfLife {
                 }
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_new() {
+        let game = GameOfLife::new(10, 10);
+        assert_eq!(game.width, 10);
+        assert_eq!(game.height, 10);
+        assert_eq!(game.cells.len(), 100);
     }
 }
