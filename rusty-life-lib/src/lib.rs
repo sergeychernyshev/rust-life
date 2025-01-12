@@ -38,6 +38,17 @@ impl GameOfLife {
         }
     }
 
+    pub fn to_string(&self) -> String {
+        let mut result = String::new();
+        for y in 0..self.height {
+            for x in 0..self.width {
+                result.push_str(if self.get_cell(x, y) { "🦠" } else { "⬛" });
+            }
+            result.push_str("\n");
+        }
+        result
+    }
+
     pub fn calculate_next_step(&mut self) {
         // @TODO replace this with swapping the pointers instead of copying all the data over
         self.prev_cells.clone_from_slice(&self.cells);

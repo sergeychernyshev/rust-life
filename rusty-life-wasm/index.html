@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rusty Life</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module">
+      import init, { rusty_life } from "./pkg/rusty_life_wasm.js";
+
+      init().then(() => {
+        console.log(rusty_life());
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Rusty Life</h1>
+    <p>A WebAssembly implementation of Conway's Game of Life written in Rust</p>
+  </body>
+</html>
