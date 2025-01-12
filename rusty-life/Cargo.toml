@@ -1,0 +1,8 @@
+[package]
+name = "rusty-life"
+authors = ["Sergey Chernyshev"]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rusty-life-lib = { path = "../rusty-life-lib" }

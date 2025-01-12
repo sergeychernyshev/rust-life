@@ -1,4 +1,4 @@
-use rust_life::GameOfLife;
+use rusty_life_lib::GameOfLife;
 use std::{thread, time};
 
 fn main() {
