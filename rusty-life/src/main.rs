@@ -3,6 +3,7 @@ use std::{thread, time};
 
 fn main() {
     let mut game = GameOfLife::new(75, 35);
+    game.randomize();
 
     let delay = time::Duration::from_millis(200);
     let mut step: usize = 0;

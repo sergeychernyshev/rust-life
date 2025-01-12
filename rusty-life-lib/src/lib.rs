@@ -9,16 +9,10 @@ pub struct GameOfLife {
 
 impl GameOfLife {
     pub fn new(width: usize, height: usize) -> GameOfLife {
-        let mut cells = vec![false; width * height];
-
-        for cell in cells.iter_mut() {
-            *cell = rand::random();
-        }
-
         GameOfLife {
             width,
             height,
-            cells: cells,
+            cells: vec![false; width * height],
             prev_cells: vec![false; width * height],
         }
     }
@@ -27,7 +21,11 @@ impl GameOfLife {
         self.cells[y * self.width + x]
     }
 
-    pub fn randomize(&mut self) {}
+    pub fn randomize(&mut self) {
+        for cell in self.cells.iter_mut() {
+            *cell = rand::random();
+        }
+    }
 
     pub fn print(&self) {
         for y in 0..self.height {
