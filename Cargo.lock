@@ -89,7 +89,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-life"
+name = "rusty-life"
+version = "0.1.0"
+dependencies = [
+ "rusty-life-lib",
+]
+
+[[package]]
+name = "rusty-life-lib"
 version = "0.1.0"
 dependencies = [
  "rand",
